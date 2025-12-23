@@ -2,6 +2,18 @@
 /* Comment l'app fonctionne */
 /****************************/
 
+// Pour protéger le mot de passe à la connection 'mongoDB'
+require('dotenv').config();
+
+// On importe mongoose
+const mongoose = require('mongoose');
+
+// code pour se connecter à mongoose ==> même chose que .env (en PHP)
+// Et on a rajouté le mot de passe que l'on a reçu qd on a créé le USER et on s'est connecté à la DB
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log('Connexion à MongoDB réussie !'))
+.catch((err) => console.log('Connexion à MongoDB échouée !', err));
+
 // require ==> pour importer 'express' depuis le module express
 const express = require('express');
 
