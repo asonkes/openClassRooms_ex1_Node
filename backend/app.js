@@ -13,6 +13,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 /** On importe le router */
 const stuffRoutes = require('./routes/stuff');
+/** On importe le router des utilisateurs */
+const UserRoutes = require('./routes/user');
 
 // code pour se connecter à mongoose ==> même chose que .env (en PHP)
 // Et on a rajouté le mot de passe que l'on a reçu qd on a créé le USER et on s'est connecté à la DB
@@ -42,6 +44,8 @@ app.use(bodyParser.json());
 
 // Ici cela permet de mettre une route globale
 app.use('/api/stuff', stuffRoutes);
+/** Afin d'enregistrer les routes des utilisateurs */
+app.use('/api/auth', userRoutes);
 
 // On exporte cette fonction pour que les autres fichiers y ai accès.
 // module.exports = système de 'module' de node
