@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 // Ici cela permet de mettre une route globale
 app.use('/api/stuff', stuffRoutes);
 /** Afin d'enregistrer les routes des utilisateurs */
-app.use('/api/auth', userRoutes);
+app.use('/api/auth', UserRoutes);
 
 // On exporte cette fonction pour que les autres fichiers y ai accès.
 // module.exports = système de 'module' de node
