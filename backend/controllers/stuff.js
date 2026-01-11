@@ -1,10 +1,16 @@
 const Thing = require('../models/Thing');
 
 exports.createThing = (req, res, next) => {
+    const thingObject = JSON.parse(req.body.thing);
+    delete thingObject._id;
+    delete thingObject.user_id;
     delete req.body._id;
 
     const thing = new Thing({
-        ...req.body
+        ...thingObject,
+        userId: req.auth.userId,
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        
     });
 
     thing.save()
